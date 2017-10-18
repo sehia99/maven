@@ -5,6 +5,8 @@
  */
 package com.bebas.terserah.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,5 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     
     @RequestMapping("/index")
-    public void index() {}
+    public Map<String, Object> index() {
+        Map<String, Object> hasil = new HashMap<>();
+        hasil.put("nama", "yo");
+        hasil.put("jurusan", "ye");
+        return hasil;
+    }
+    
 }
