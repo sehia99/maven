@@ -9,16 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AppController {
     
     @RequestMapping("/index")
-    public Map<String, Object> index() {
+    public Map<String, Object> index(@RequestParam("nama")String nama){
         Map<String, Object> hasil = new HashMap<>();
-        hasil.put("nama", "yo");
+        hasil.put("nama", nama);
         hasil.put("jurusan", "ye");
         return hasil;
     }
-    
+
 }

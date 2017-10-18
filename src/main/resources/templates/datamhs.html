@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Data Gan</title>
+    </head>
+    <body>
+        <h1>Daftar Mahasiswa</h1>
+        <br />
+        
+        <table border='1'>
+            <thead>
+                <tr>
+                    <th>NIM</th>
+                    <th>NAMA</th>
+                    <th>JURUSAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mhs : ${datamhs}">
+                    <td th:text="${mhs.nim}"></td>
+                    <td th:text="${mhs.nama}"></td>
+                    <td th:text="${mhs.jurusan}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
