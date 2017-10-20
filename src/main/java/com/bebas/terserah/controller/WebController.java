@@ -5,7 +5,10 @@
  */
 package com.bebas.terserah.controller;
 
+import com.bebas.terserah.repo.MahasiswaRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class WebController {
+    @Autowired
+    private MahasiswaRepo mhsRepo;
+    
     @RequestMapping("/datamhs")
-    public void datamhs() {
-        
+    public void datamhs(Model model) {
+        model.addAttribute("datamhs", mhsRepo.findAll());
     }
 }
