@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -40,4 +41,26 @@ public class WebController {
         // proses simpan data
         mhsRepo.save(mhs);
     }
+    
+    @RequestMapping("/hapus")
+    public String hapusData(@RequestParam("nim") String nim){
+        mhsRepo.delete(nim);
+        return "redirect:datamhs";
+    }
+    
+    @RequestMapping(value = "/ubah", method = RequestMethod.GET)
+    public void getubahdata(@RequestParam("nim") String nim, Model model){
+        Mahasiswa data = mhsRepo.findOne(nim);
+        model.addAttribute("mhs", data);
+    }
+    
+    @RequestMapping(value = "/ubah", method = RequestMethod.POST)
+    public String saveubahdata(@ModelAttribute("mhs") Mahasiswa mhs, BindingResult result){
+        System.out.println("nim : " + mhs.getNim());
+        System.out.println("nama : " + mhs.getNama());
+        System.out.println("jurusan : " + mhs.getJurusan());
+        mhsRepo.save(mhs);
+        return "redirect:datamhs";
+    }
+    
 }
